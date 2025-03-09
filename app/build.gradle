@@ -1,0 +1,54 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(new FileInputStream(localPropertiesFile))
+}
+def WEATHER_API_KEY = localProperties.getProperty("WEATHER_API_KEY") ?: ""
+android {
+    namespace 'com.example.androidweatherapp'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.example.androidweatherapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "String", "WEATHER_API_KEY", "\"${WEATHER_API_KEY}\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "WEATHER_API_KEY", "\"${WEATHER_API_KEY}\""
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
