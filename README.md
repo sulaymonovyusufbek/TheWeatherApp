@@ -15,8 +15,7 @@ This is a simple Android weather application that uses the WeatherAPI to fetch t
 ## 1. Clone the Repository:
 First, clone this repository to your local machine:
 ```bash
-git clone https://github.com/sulaymonovyusufbek/WeatherApp.git
-
+git clone https://github.com/sulaymonovyusufbek/TheWeatherApp.git
  ```` 
 
 ## 2. Open in Android Studio:
