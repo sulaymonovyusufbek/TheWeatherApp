@@ -1,5 +1,5 @@
 
-# Anroid Weather App
+# Android Weather App
 
 This is a simple Android weather application that uses the WeatherAPI to fetch the current weather data for a given city. The app is built using Retrofit for network calls and displays temperature and weather condition data.
 
